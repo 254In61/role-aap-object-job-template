@@ -1,2 +1,2 @@
-# role-aap-object-template
-Ansible role to build AAP template objects
+# role-aap-object-credential
+Ansible role to build AAP credential objects
