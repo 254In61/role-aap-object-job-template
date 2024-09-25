@@ -5,7 +5,7 @@
     name: "{{ in_list[0] }}"
     playbook: "{{ in_list[1] }}"
     credentials: "{{ in_list[2] }}"
-    execution_environment: "{{ in_list[3] }}" # Temporary until exec node can pull down images 
+    execution_environment: "{{ in_list[3] }}"
     timeout: "{{ in_list[4] }}"
     instance_groups: "{{ in_list[5] }}"
     job_type: "{{ in_list[6] }}"
