@@ -12,7 +12,7 @@ Step 1: Install the role in your environment.
 
 Step 2: Define your variables in the structure below
 
-job: true/false # Bool value to switch role on off.
+build: true/false # Bool value to switch role on off.
 
 in_list_name:
    - name

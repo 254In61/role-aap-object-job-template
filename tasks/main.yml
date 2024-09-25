@@ -1,4 +1,4 @@
 ---
 - name: Import job-template tasks
   ansible.builtin.import_tasks: build.yml
-  when: job | bool
+  when: build | bool
