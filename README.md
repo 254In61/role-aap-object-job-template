@@ -4,10 +4,6 @@ Ansible role to build AAP workflow objects
 # Ref
 https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/content/module/schedule/
 
-
-# design
-- Role takes in a list and runs with it.
-
 # How to use
 
 Step 1: Install the role in your environment.
@@ -34,7 +30,7 @@ in_list_name:
 
 Step 3: Call the role from your playbook.
 
-# Example playbook
+# Example
 
 ## varible definition in group_vars/*.yml
 f5_job_template: 
