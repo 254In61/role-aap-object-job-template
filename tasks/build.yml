@@ -1,0 +1,16 @@
+---
+# Create job templates
+- name: "Build {{ in_list[0] }} job templates"
+  ansible.controller.job_template:
+    name: "{{ in_list[0] }}"
+    playbook: "{{ in_list[1] }}"
+    credentials: "{{ in_list[2] }}"
+    execution_environment: "{{ in_list[3] }}" # Temporary until exec node can pull down images 
+    timeout: "{{ in_list[4] }}"
+    instance_groups: "{{ in_list[5] }}"
+    job_type: "{{ in_list[6] }}"
+    description: "{{ in_list[7] }}"
+    organization: "{{ in_list[8] }}"
+    inventory: "{{ in_list[9] }}"
+    project: "{{ in_list[10] }}"
+    state: "{{ in_list[11] }}"
