@@ -1,6 +1,6 @@
 ---
 # Create job templates
-- name: "Build {{ in_list[0] }} job templates"
+- name: "Build job templates - {{ in_list[0] }}"
   ansible.controller.job_template:
     name: "{{ in_list[0] }}"
     playbook: "{{ in_list[1] }}"
