@@ -1,0 +1,24 @@
+---
+- name: Playbook to configure AAP
+  hosts: localhost
+  gather_facts: false
+ 
+  pre_tasks:
+    - name: Include specific project variables
+      ansible.builtin.include_vars:
+        dir: group_vars
+
+  tasks:
+    !
+    !
+    - name: Import role-aap-object-job-template
+      ansible.builtin.include_role:
+        name: role-aap-object-job-template
+      vars:
+        job: "{{ job_template_build }}"
+        in_list: "{{ item }}"
+      loop:
+        - "{{ cisco_job_template }}"
+        - "{{ f5_job_template }}" 
+    !
+    !
