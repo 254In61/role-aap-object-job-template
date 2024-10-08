@@ -4,7 +4,7 @@
   ansible.controller.job_template:
     name: "{{ name }}"
     playbook: "{{ playbook }}"
-    credentials: "{{ credentials }}"
+    credentials: "{{ credentials }}" # A list
     execution_environment: "{{ execution_environment }}"
     timeout: "{{ timeout }}"
     instance_groups: "{{ instance_groups }}"
