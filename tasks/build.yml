@@ -6,7 +6,7 @@
     playbook: "{{ playbook }}"
     credentials: "{{ credentials }}" # A list
     execution_environment: "{{ execution_environment }}"
-    timeout: "{{ job_timeout }}"
+    # timeout: "{{ job_timeout }}"
     instance_groups: "{{ instance_groups }}"
     job_type: "{{ job_type }}"
     description: "{{ description }}"
