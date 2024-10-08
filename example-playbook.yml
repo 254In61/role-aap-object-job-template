@@ -15,10 +15,18 @@
       ansible.builtin.include_role:
         name: role-aap-object-job-template
       vars:
-        job: "{{ job_template_build }}"
-        in_list: "{{ item }}"
-      loop:
-        - "{{ cisco_job_template }}"
-        - "{{ f5_job_template }}" 
+        build: true
+        name: "{{ item.value.job_template_name }}"
+        playbook: "{{ item.value.playbook }}"
+        credentials: "{{ credentials }}"
+        execution_environment: "{{ item.value.execution_environment }}"
+        instance_groups: "{{ instance_groups }}"
+        job_type: "{{ job_type }}"
+        description: "{{ common_description }}"
+        organization: "{{ organization }}"
+        inventory: "{{ inventory_name }}"
+        project: "{{ project_name }}"
+        state: "{{ state }}"
+      loop: "{{ lookup('dict', templates) }}"  
     !
     !

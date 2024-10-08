@@ -1,29 +1,36 @@
 ---
-f5_job_template: 
-  - "{{ f5_config_backup_job_template_name }}"
-  - "{{ f5_config_backup_playbook }}"
-  - ["{{ f5_config_backup_creds }}" , "{{ git_credential_as_network_type[0] }}"] 
-  - "{{ f5_exec_env }}"
-  - "{{ job_template_timeout }}"
-  - "{{ exec_nodes_instance_groups }}"
-  - "{{ job_type }}"
-  - "{{ common_description }}"
-  - "{{ organization }}"
-  - "{{ inventory_name }}"
-  - "{{ project_name }}"
-  - "{{ job_state }}"
+# COMMON
 
-cisco_job_template: 
-  - "{{ cisco_config_backup_job_template_name }}"
-  - "{{ cisco_config_backup_playbook }}"
-  - ["{{ cisco_config_backup_creds }}" , "{{ git_credential_as_network_type[0] }}"] 
-  - "{{ custom_network_exec_env }}"
-  - "{{ job_template_timeout }}"
-  - "{{ exec_nodes_instance_groups }}"
-  - "{{ job_type }}"
-  - "{{ common_description }}"
-  - "{{ organization }}"
-  - "{{ inventory_name }}"
-  - "{{ project_name }}"
-  - "{{ job_state }}"
-  
+job_template_timeout: 1800
+credentials: "{{ service_acc_name }}"
+instance_groups:
+  - EK Execution Nodes
+job_type: run
+state: present
+
+
+# Exec env needs git credentials to do gitlab tasks.
+# AAP does NOT handover scm credentials to the exec env.
+# Work around was to create network credentials same values
+network_credential_name: "{{ git_nw_acc_name }}"
+
+templates:
+  cisco:
+    job_template_name: 00_appc-network-cisco-config-backup
+    playbook: cisco.yml
+    execution_environment: custom-network-exec-env
+
+  junos:
+    job_template_name: 00_appc-network-junos-config-backup
+    playbook: junos.yml
+    execution_environment: junos-exec-env
+
+  fortios:
+    job_template_name: 00_appc-network-fortios-config-backup
+    playbook: fortios.yml
+    execution_environment: fortios-exec-env
+
+  bigip:
+    job_template_name: 00_appc-network-f5-config-backup
+    playbook: f5.yml
+    execution_environment: f5-exec-env
